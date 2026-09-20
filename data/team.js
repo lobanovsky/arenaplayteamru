@@ -1,5 +1,5 @@
 export const team = {
-  stats: { games: 1, wins: 0, losses: 1, draws: 0 },
+  stats: { games: 2, wins: 1, losses: 1, draws: 0 },
   nextGame: { date: '12 сентября 2026', time: '21:45', arena: 'Апиа арена-2', opponent: 'ФедКо', tournament: 'Кубок ЛХЛ-77 · квалификация' },
   results: [{ date: '05.09.2026', opponent: 'Краномонтаж', score: '2 : 6', result: 'loss', tournament: 'Кубок ЛХЛ-77' }],
   roster: {
@@ -15,4 +15,3 @@ export const team = {
   },
   coach: 'Андрей Малых'
 };
-
