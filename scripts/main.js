@@ -1,5 +1,9 @@
 import { team } from '../data/team.js';
 
+const liveBanner = document.querySelector('[data-live-date]');
+const moscowDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+if (liveBanner && liveBanner.dataset.liveDate !== moscowDate) liveBanner.hidden = true;
+
 const $ = (selector) => document.querySelector(selector);
 const initials = (name) => name.split(' ').map((part) => part[0]).slice(0, 2).join('');
 
@@ -18,4 +22,3 @@ $('#year').textContent = new Date().getFullYear();
 document.querySelector('.menu-toggle').addEventListener('click', (event) => { const open = event.currentTarget.getAttribute('aria-expanded') === 'true'; event.currentTarget.setAttribute('aria-expanded', String(!open)); $('#site-nav').classList.toggle('is-open', !open); });
 document.querySelectorAll('.site-nav a').forEach((link) => link.addEventListener('click', () => { $('#site-nav').classList.remove('is-open'); document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false'); }));
 document.querySelectorAll('[data-placeholder-link]').forEach((link) => link.addEventListener('click', (event) => { event.preventDefault(); }));
-
