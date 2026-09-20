@@ -1,0 +1,30 @@
+name: arenaplayteam
+services:
+  site:
+    image: ${SITE_IMAGE:?Set SITE_IMAGE to an immutable image tag or digest}
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs:
+      - /tmp
+      - /config:uid=1000,gid=1000
+      - /data:uid=1000,gid=1000
+    networks:
+      - proxy
+    labels:
+      traefik.enable: "${TRAEFIK_ENABLED:-false}"
+      traefik.docker.network: housekpr-network
+      traefik.http.routers.arenaplayteam.rule: Host(`arenaplayteam.ru`) || Host(`www.arenaplayteam.ru`)
+      traefik.http.routers.arenaplayteam.entrypoints: https
+      traefik.http.routers.arenaplayteam.tls.certresolver: letsEncrypt
+      traefik.http.services.arenaplayteam.loadbalancer.server.port: "8080"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+networks:
+  proxy:
+    external: true
+    name: housekpr-network
+
