@@ -17,13 +17,13 @@ bash scripts/smoke-test.sh arenaplayteam:check
 
 ## GitHub Actions
 
-Создать Environment `production` и добавить секреты `DOCKER_USERNAME`, `DOCKER_TOKEN`, `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PORT`, `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_HOST_PROJECT_PATH`. Затем создать repository variable `DEPLOY_ENABLED=true`.
+Создать Environment `production` и добавить секреты `DOCKER_USERNAME`, `DOCKER_TOKEN`, `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PORT`, `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_HOST_PROJECT_PATH`. Push в `master` запускает сборку и деплой.
 
 Docker Hub token не хранить в репозитории. Токен, опубликованный в переписке, необходимо отозвать и заменить.
 
 ## Сервер
 
-Проект разворачивается в `/home/mr17dom1/projects/arenaplayru` и подключается к существующей сети Traefik `housekpr-network`. После первого успешного деплоя включить маршрут в `routing.env`:
+Проект разворачивается в `/home/mr17dom1/projects/arenaplayru` и подключается к существующей сети Traefik `housekpr-network`. В корне каталога доступны `compose.yaml`, `.env` и `routing.env` (Compose и `.env` указывают на текущий релиз). Маршрут включён через `routing.env`:
 
 ```sh
 TRAEFIK_ENABLED=true
