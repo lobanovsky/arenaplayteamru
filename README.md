@@ -17,7 +17,7 @@ bash scripts/smoke-test.sh arenaplayteam:check
 
 ## GitHub Actions
 
-Создать Environment `production` и добавить секреты `DOCKER_USERNAME`, `DOCKER_TOKEN`, `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PORT`, `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_HOST_PROJECT_PATH`. Push в `master` запускает сборку и деплой.
+Создать Environment `production` и добавить секреты `DOCKER_USERNAME`, `DOCKER_TOKEN`, `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PORT`, `DEPLOY_SSH_KEY`, `DEPLOY_HOST_PROJECT_PATH`. Публичный ключ сервера закреплён в `deploy/known_hosts`. Push в `master` запускает сборку и деплой.
 
 Docker Hub token не хранить в репозитории. Токен, опубликованный в переписке, необходимо отозвать и заменить.
 
