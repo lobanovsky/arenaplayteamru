@@ -12,7 +12,7 @@ services:
     networks:
       - proxy
     labels:
-      traefik.enable: "${TRAEFIK_ENABLED:-false}"
+      traefik.enable: "true"
       traefik.docker.network: housekpr-network
       traefik.http.routers.arenaplayteam.rule: Host(`arenaplayteam.ru`) || Host(`www.arenaplayteam.ru`)
       traefik.http.routers.arenaplayteam.entrypoints: https
@@ -27,4 +27,3 @@ networks:
   proxy:
     external: true
     name: housekpr-network
-

@@ -23,10 +23,15 @@ Docker Hub token не хранить в репозитории. Токен, оп
 
 ## Сервер
 
-Проект разворачивается в `/home/mr17dom1/projects/arenaplayru` и подключается к существующей сети Traefik `housekpr-network`. В корне каталога доступны `compose.yaml`, `.env` и `routing.env` (Compose и `.env` указывают на текущий релиз). Маршрут включён через `routing.env`:
+Проект разворачивается в `/home/mr17dom1/projects/arenaplayru` и подключается к существующей сети Traefik `housekpr-network`. CI/CD записывает в корень настоящий `compose.yaml` и `.env` с текущим Docker-образом. Маршрут Traefik всегда включён в `compose.yaml`.
+
+На сервере достаточно обычных команд:
 
 ```sh
-TRAEFIK_ENABLED=true
+cd /home/mr17dom1/projects/arenaplayru
+docker compose pull
+docker compose up -d
+docker compose ps
 ```
 
-До включения маршрута проверить, что DNS-записи `@` и `www` домена указывают на сервер.
+`docker compose down` останавливает сайт; повторный `docker compose up -d` запускает его с тем же образом и настройками.
