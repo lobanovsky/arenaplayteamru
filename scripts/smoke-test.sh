@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 image="${1:?Image required}"
-container="$(docker run -d --read-only --cap-drop ALL --tmpfs /tmp --tmpfs /config:uid=1000,gid=1000 --tmpfs /data:uid=1000,gid=1000 -p 127.0.0.1::8080 "$image")"
+container="$(docker run -d -p 127.0.0.1::8080 "$image")"
 trap 'docker rm -f "$container" >/dev/null' EXIT
 port="$(docker port "$container" 8080/tcp | cut -d: -f2)"
 url="http://127.0.0.1:$port"
@@ -12,4 +12,3 @@ curl -fsS "$url/scripts/main.js" | grep -q 'Arena Play'
 curl -fsS "$url/assets/logo.svg" >/dev/null
 curl -s "$url/404.html" | grep -q noindex
 echo 'HTTP smoke tests passed.'
-

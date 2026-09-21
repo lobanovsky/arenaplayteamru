@@ -23,7 +23,7 @@ Docker Hub token не хранить в репозитории. Токен, оп
 
 ## Сервер
 
-Проект разворачивается в `/home/mr17dom1/projects/arenaplayru` и подключается к существующей сети Traefik `housekpr-network`. CI/CD записывает в корень настоящий `compose.yaml` и `.env` с текущим Docker-образом. Маршрут Traefik всегда включён в `compose.yaml`.
+Проект разворачивается в `/home/mr17dom1/projects/arenaplayru` и подключается к существующей сети Traefik `housekpr-network`. CI/CD публикует образ `lobanovsky/arenaplayru:<короткий SHA>` и записывает этот SHA как `TAG` в серверный `.env`. Маршрут Traefik всегда включён в `compose.yaml`.
 
 На сервере достаточно обычных команд:
 

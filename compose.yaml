@@ -1,14 +1,9 @@
 name: arenaplayteam
 services:
   site:
-    image: ${SITE_IMAGE:?Set SITE_IMAGE to an immutable image tag or digest}
+    image: lobanovsky/arenaplayru:${TAG:?Set TAG in .env}
+    container_name: arenaplayteam-site
     restart: unless-stopped
-    read_only: true
-    cap_drop: [ALL]
-    tmpfs:
-      - /tmp
-      - /config:uid=1000,gid=1000
-      - /data:uid=1000,gid=1000
     networks:
       - proxy
     labels:
