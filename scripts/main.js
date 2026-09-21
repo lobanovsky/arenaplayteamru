@@ -7,11 +7,6 @@ if (liveBanner && liveBanner.dataset.liveDate !== moscowDate) liveBanner.hidden 
 const $ = (selector) => document.querySelector(selector);
 const initials = (name) => name.split(' ').map((part) => part[0]).slice(0, 2).join('');
 
-for (const [key, value] of Object.entries(team.stats)) {
-  const element = document.querySelector(`[data-stat="${key}"]`);
-  if (element) element.textContent = value;
-}
-
 $('#next-game').innerHTML = `<p class="eyebrow">Следующая игра</p><div class="game-date">${team.nextGame.date}<strong>${team.nextGame.time}</strong></div><p class="game-tournament">${team.nextGame.tournament}</p><div class="matchup"><span>Arena<br /><b>Play</b></span><i>VS</i><span>${team.nextGame.opponent}</span></div><p class="arena">⌖ ${team.nextGame.arena}</p>`;
 
 $('#results-list').innerHTML = team.results.map((game) => `<div class="result-row"><span>${game.date}</span><b>Arena Play — ${game.opponent}</b><strong class="${game.result}">${game.score}</strong></div>`).join('');
