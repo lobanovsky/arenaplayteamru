@@ -2,7 +2,8 @@ import { team } from '../data/team.js';
 
 const liveBanner = document.querySelector('[data-live-date]');
 const moscowDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-if (liveBanner && liveBanner.dataset.liveDate !== moscowDate) liveBanner.hidden = true;
+// Показываем баннер до конца дня data-live-date (по Москве), после — скрываем
+if (liveBanner && moscowDate > liveBanner.dataset.liveDate) liveBanner.hidden = true;
 
 const $ = (selector) => document.querySelector(selector);
 const initials = (name) => name.split(' ').map((part) => part[0]).slice(0, 2).join('');

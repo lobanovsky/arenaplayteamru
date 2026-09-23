@@ -1,6 +1,6 @@
 export const team = {
     stats: {games: 3, wins: 2, losses: 1, draws: 0},
-    nextGame: {date: '27 сентября 2026', time: '18:00', arena: 'Апиа арена', opponent: 'Галс', tournament: 'Кубок ЛХЛ-77 · квалификация. '},
+    nextGame: {date: '27 сентября 2026', time: '18:00', arena: 'Апиа арена', opponent: 'Галс', tournament: 'Кубок ЛХЛ-77 · квалификация · финал'},
     results: [
         {date: '20.09.2026', opponent: 'HB HDCR', score: '3 : 2', result: 'win', tournament: 'Кубок ЛХЛ-77'},
         {date: '12.09.2026', opponent: 'Федко', score: '5 : 3', result: 'win', tournament: 'Кубок ЛХЛ-77'},
