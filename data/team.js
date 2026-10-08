@@ -3,11 +3,11 @@ export const team = {
     nextGame: {date: '11 октября 2026', time: '18:15', arena: 'Созвездие', opponent: 'Grizzly team', tournament: '13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77. ДЕБЮТАНТ. Игра 2'},
     results: [
         {date: '11.10.2026', opponent: 'Grizzly team', score: '0 : 0', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 2'},
-        {date: '03.10.2026', opponent: 'Крылья Столицы', score: '3 : 6', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 1'},
-        {date: '27.09.2026', opponent: 'ГАЛС', score: '4 : 5', result: 'loss', tournament: 'Квалификация. Кубок ЛХЛ-77'},
-        {date: '20.09.2026', opponent: 'HB HDCR', score: '3 : 2', result: 'win', tournament: 'Квалификация. Кубок ЛХЛ-77'},
-        {date: '12.09.2026', opponent: 'Федко', score: '5 : 3', result: 'win', tournament: 'Квалификация. Кубок ЛХЛ-77'},
-        {date: '05.09.2026', opponent: 'Краномонтаж', score: '2 : 6', result: 'loss', tournament: 'Квалификация. Кубок ЛХЛ-77'}],
+        {date: '03.10.2026', opponent: 'Крылья Столицы', score: '3 : 6', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 1'}],
+        // {date: '27.09.2026', opponent: 'ГАЛС', score: '4 : 5', result: 'loss', tournament: 'Квалификация. Кубок ЛХЛ-77'},
+        // {date: '20.09.2026', opponent: 'HB HDCR', score: '3 : 2', result: 'win', tournament: 'Квалификация. Кубок ЛХЛ-77'},
+        // {date: '12.09.2026', opponent: 'Федко', score: '5 : 3', result: 'win', tournament: 'Квалификация. Кубок ЛХЛ-77'},
+        // {date: '05.09.2026', opponent: 'Краномонтаж', score: '2 : 6', result: 'loss', tournament: 'Квалификация. Кубок ЛХЛ-77'}],
     roster: {
         'Вратари': [
             {name: 'Павел Гладышев', number: 1}, {name: 'Михаил Шмыров', number: 1}, {name: 'Анвар Фазылов', number: 31}
