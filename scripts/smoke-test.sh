@@ -10,5 +10,6 @@ for attempt in {1..30}; do curl -fsS "$url/" >/dev/null 2>&1 && break; sleep 1; 
 [[ "$(curl -s -o /dev/null -w '%{http_code}' "$url/not-a-page")" == 404 ]]
 curl -fsS "$url/scripts/main.js" | grep -q 'Arena Play'
 curl -fsS "$url/assets/logo.svg" >/dev/null
+curl -fsS "$url/data/schedule.json" | grep -q '"nextGame"'
 curl -s "$url/404.html" | grep -q noindex
 echo 'HTTP smoke tests passed.'

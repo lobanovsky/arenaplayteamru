@@ -13,7 +13,9 @@ bash scripts/smoke-test.sh arenaplayteam:check
 
 ## Данные
 
-Состав, матчи и статистика находятся в `data/team.js`. После изменения файла сайт собирается обычным push в `master`.
+Состав и статистика находятся в `data/team.js`; расписание хранится в `data/schedule.json`. Workflow `Update schedule` ежедневно в 07:00 по Москве читает страницу клуба Arena Play на ЛХЛ-77 и обновляет расписание и результаты. При изменении данных он делает коммит и запускает сборку и деплой сайта. Workflow можно запустить вручную в GitHub Actions.
+
+Парсер можно проверить локально командами `python3 -m unittest discover -s scripts -p 'test_*.py'` и `python3 scripts/sync_schedule.py`. Для локального просмотра используйте HTTP-сервер из корня репозитория, чтобы браузер мог загрузить JSON-файл расписания.
 
 ## GitHub Actions
 

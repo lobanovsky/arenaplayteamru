@@ -4,6 +4,7 @@ private/
 !.env.example
 node_modules/
 dist/
+__pycache__/
 .DS_Store
 
 /.github/git-commit-instructions.md
