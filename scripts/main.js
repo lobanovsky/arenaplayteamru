@@ -12,11 +12,16 @@ const displayDate = (date) => new Date(`${date}T12:00:00+03:00`).toLocaleDateStr
 $('#next-game').innerHTML = `<p class="eyebrow">Следующая игра</p><div class="game-date">${displayDate(nextGame.dateISO)}<strong>${escapeHTML(nextGame.time)}</strong></div><p class="game-tournament">${escapeHTML(nextGame.tournament)}</p><div class="matchup"><span>Arena<br /><b>Play</b></span><i>VS</i><span>${escapeHTML(nextGame.opponent)}</span></div><p class="arena">⌖ ${escapeHTML(nextGame.arena)}</p>`;
 
 const banner = $('#next-game-banner');
-banner.href = 'https://lhl-77.ru/clubs/686';
+const videoCatalog = 'https://vkvideo.ru/@lhl_77/all';
+const upcomingVideo = nextGame.videoUrl || videoCatalog;
 banner.setAttribute('aria-label', `Ближайшая игра Arena Play: ${nextGame.opponent}, ${displayDate(nextGame.dateISO)} в ${nextGame.time}. Страница команды в ЛХЛ-77`);
-banner.innerHTML = `<span><span class="live-dot"></span> Ближайшая игра</span><strong>Arena Play — ${escapeHTML(nextGame.opponent)} · ${displayDate(nextGame.dateISO)}, ${escapeHTML(nextGame.time)}</strong><span aria-hidden="true">↗</span>`;
+banner.innerHTML = `<span><span class="live-dot"></span> Ближайшая игра</span><a href="https://lhl-77.ru/clubs/686" target="_blank" rel="noopener noreferrer"><strong>Arena Play — ${escapeHTML(nextGame.opponent)} · ${displayDate(nextGame.dateISO)}, ${escapeHTML(nextGame.time)}</strong></a><a class="banner-video" href="${escapeHTML(upcomingVideo)}" target="_blank" rel="noopener noreferrer">${upcomingVideo === videoCatalog ? 'Все видео ЛХЛ-77' : 'Смотреть трансляцию'} ↗</a>`;
 
-$('#results-list').innerHTML = schedule.results.map((game) => `<div class="result-row"><span>${escapeHTML(game.date)}</span><div class="result-match"><b>Arena Play — ${escapeHTML(game.opponent)}</b>${game.videoUrl ? `<a class="result-video" href="${escapeHTML(game.videoUrl)}" target="_blank" rel="noopener noreferrer">Смотреть видео ↗</a>` : game.result === 'scheduled' ? '<span class="result-video-pending">Видео пока нет</span>' : ''}</div><strong class="${escapeHTML(game.result)}">${escapeHTML(game.score)}</strong></div>`).join('');
+$('#results-list').innerHTML = schedule.results.map((game) => {
+  const videoUrl = game.videoUrl || videoCatalog;
+  const videoLabel = videoUrl === videoCatalog ? 'Все видео ЛХЛ-77' : game.result === 'scheduled' ? 'Смотреть трансляцию' : 'Смотреть видео';
+  return `<div class="result-row"><span>${escapeHTML(game.date)}</span><div class="result-match"><b>Arena Play — ${escapeHTML(game.opponent)}</b><a class="result-video" href="${escapeHTML(videoUrl)}" target="_blank" rel="noopener noreferrer">${videoLabel} ↗</a></div><strong class="${escapeHTML(game.result)}">${escapeHTML(game.score)}</strong></div>`;
+}).join('');
 
 $('#roster-list').innerHTML = Object.entries(team.roster).map(([position, players]) => `<div class="roster-group"><div class="roster-group-heading"><h3>${position}</h3><span>${players.length}</span></div>${players.map((player) => `<article class="player-card"><div class="player-avatar">${initials(player.name)}</div><div><h4>${player.name}</h4><span>${position.slice(0, -1)}</span></div><strong>#${player.number}</strong></article>`).join('')}</div>`).join('') + `<div class="coach-card"><span class="eyebrow">Главный тренер</span><strong>${team.coach}</strong></div>`;
 

@@ -11,6 +11,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
+from sync_videos import attach_videos, fetch_videos
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEDULE_PATH = ROOT / "data" / "schedule.json"
@@ -226,6 +227,12 @@ def main() -> int:
             raise RuntimeError("На странице не найдена таблица игр Arena Play; расписание не изменено")
         current = json.loads(SCHEDULE_PATH.read_text(encoding="utf-8"))
         updated = update_schedule(current, games, datetime.now(MOSCOW))
+        try:
+            videos = fetch_videos()
+        except Exception as error:
+            print(f"VK Видео недоступно, используем сохранённые ссылки или каталог: {error}", file=sys.stderr)
+            videos = []
+        attach_videos(updated, videos)
         serialized = json.dumps(updated, ensure_ascii=False, indent=2) + "\n"
         if serialized != SCHEDULE_PATH.read_text(encoding="utf-8"):
             SCHEDULE_PATH.write_text(serialized, encoding="utf-8")

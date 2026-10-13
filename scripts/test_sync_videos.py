@@ -1,0 +1,37 @@
+import json
+import unittest
+
+from sync_videos import VIDEO_CATALOG, attach_videos, find_video, parse_videos
+
+
+class VideoSyncTests(unittest.TestCase):
+    def test_catalog_metadata_and_matching_reversed_teams(self):
+        page = '<script type="application/ld+json">' + json.dumps({
+            "@type": "VideoGallery", "video": [{"@type": "VideoObject",
+            "name": "Grizzly team — Arena Play", "datePublished": "2026-10-11T18:00:00+03:00",
+            "contentUrl": "https://vkvideo.ru/live-71330880_456246255"}]}) + '</script>'
+        videos = parse_videos(page)
+        self.assertEqual(find_video({"dateISO": "2026-10-11", "opponent": "Grizzly team"}, videos), videos[0]["url"])
+
+    def test_old_match_and_highlights_are_not_future_broadcast(self):
+        game = {"dateISO": "2026-10-17", "opponent": "Grizzly team"}
+        videos = [{"title": "Arena Play - Grizzly team", "date": "2026-10-11", "url": "old"},
+                  {"title": "Хайлайты Arena Play - Grizzly team", "date": "2026-10-17", "url": "highlights"}]
+        self.assertIsNone(find_video(game, videos))
+
+    def test_fallback_is_replaced_and_manual_recordings_preserved(self):
+        upcoming = {"dateISO": "2026-10-17", "opponent": "Легенда-Старт"}
+        scheduled = dict(upcoming, videoUrl=VIDEO_CATALOG)
+        old = {"dateISO": "2026-10-11", "opponent": "Grizzly team", "videoUrl": "manual"}
+        schedule = {"nextGame": upcoming, "results": [scheduled, old]}
+        attach_videos(schedule, [])
+        self.assertEqual(upcoming["videoUrl"], VIDEO_CATALOG)
+        url = "https://vkvideo.ru/live-71330880_123"
+        attach_videos(schedule, [{"title": "Arena Play - Легенда-Старт", "date": "2026-10-16", "url": url}])
+        self.assertEqual(upcoming["videoUrl"], url)
+        self.assertEqual(scheduled["videoUrl"], url)
+        self.assertEqual(old["videoUrl"], "manual")
+
+
+if __name__ == "__main__":
+    unittest.main()
