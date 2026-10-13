@@ -1,8 +1,9 @@
 export const team = {
-    stats: {games: 1, wins: 0, losses: 1, draws: 0},
-    nextGame: {date: '11 октября 2026', time: '18:15', arena: 'Созвездие', opponent: 'Grizzly team', tournament: '13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77. ДЕБЮТАНТ. Игра 2'},
+    stats: {games: 2, wins: 0, losses: 2, draws: 0},
+    nextGame: {date: '17 октября 2026', time: '21:45', arena: 'АПИА АРЕНА-2', opponent: 'ЛЕГЕНДА-СТАРТ', tournament: '13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77. ДЕБЮТАНТ. Игра 3'},
     results: [
-        {date: '11.10.2026', opponent: 'Grizzly team', score: '0 : 0', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 2'},
+        {date: '11.10.2026', opponent: 'ЛЕГЕНДА-СТАРТ', score: '0 : 0', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 3'},
+        {date: '11.10.2026', opponent: 'Grizzly team', score: '1 : 2', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 2'},
         {date: '03.10.2026', opponent: 'Крылья Столицы', score: '3 : 6', result: 'loss', tournament: 'Кубок ЛХЛ-77. Игра 1'}],
         // {date: '27.09.2026', opponent: 'ГАЛС', score: '4 : 5', result: 'loss', tournament: 'Квалификация. Кубок ЛХЛ-77'},
         // {date: '20.09.2026', opponent: 'HB HDCR', score: '3 : 2', result: 'win', tournament: 'Квалификация. Кубок ЛХЛ-77'},
