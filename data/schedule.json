@@ -1,8 +1,40 @@
 {
-  "nextGame": {"date": "17.10.2026", "dateISO": "2026-10-17", "time": "21:45", "arena": "АПИА АРЕНА-2", "opponent": "ЛЕГЕНДА-СТАРТ", "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77. ДЕБЮТАНТ. Игра 3"},
+  "nextGame": {
+    "date": "17.10.2026",
+    "dateISO": "2026-10-17",
+    "time": "21:45",
+    "arena": "Апиа арена-2",
+    "opponent": "Легенда-Старт",
+    "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+    "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+  },
   "results": [
-    {"date": "17.10.2026", "dateISO": "2026-10-17", "opponent": "ЛЕГЕНДА-СТАРТ", "score": "0 : 0", "result": "scheduled", "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77. ДЕБЮТАНТ. Игра 3", "videoUrl": null},
-    {"date": "11.10.2026", "dateISO": "2026-10-11", "opponent": "Grizzly team", "score": "1 : 2", "result": "loss", "tournament": "Кубок ЛХЛ-77. Игра 2", "videoUrl": "https://vkvideo.ru/live-71330880_456246255"},
-    {"date": "03.10.2026", "dateISO": "2026-10-03", "opponent": "Крылья Столицы", "score": "3 : 6", "result": "loss", "tournament": "Кубок ЛХЛ-77. Игра 1", "videoUrl": "https://vkvideo.ru/live-71330880_456246200"}
+    {
+      "date": "17.10.2026",
+      "dateISO": "2026-10-17",
+      "opponent": "Легенда-Старт",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
+    {
+      "date": "11.10.2026",
+      "dateISO": "2026-10-11",
+      "opponent": "Grizzly team",
+      "score": "1 : 2",
+      "result": "loss",
+      "tournament": "ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/live-71330880_456246255"
+    },
+    {
+      "date": "03.10.2026",
+      "dateISO": "2026-10-03",
+      "opponent": "Крылья Столицы",
+      "score": "3 : 6",
+      "result": "loss",
+      "tournament": "ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/live-71330880_456246200"
+    }
   ]
 }
