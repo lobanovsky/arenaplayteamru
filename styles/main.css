@@ -42,3 +42,5 @@
 .captain-phone:hover, .dialog-close:hover {
   color: var(--red);
 }
+
+.player-card .player-badge{display:inline-grid;place-items:center;flex-shrink:0;width:21px;height:21px;font-size:16px;line-height:1;text-transform:none}

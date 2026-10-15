@@ -20,10 +20,10 @@ export const team = {
             {name: 'Илья Ульянов', number: 56, photo: 'https://lhl-77.ru/images/player_photo/500_1791576077.jpg'},
             {name: 'Максим Лосяков', number: 58, photo: 'https://lhl-77.ru/images/player_photo/500_1789393743.jpeg'},
             {name: 'Руслан Нагимов', number: 65, photo: 'https://lhl-77.ru/images/player_photo/500_1789500513.jpg'},
-            {name: 'Иван Ведеров', number: 68, photo: 'https://lhl-77.ru/images/player_photo/500_1789394657.jpeg'},
+            {name: 'Иван Ведеров', number: 68, photo: 'https://lhl-77.ru/images/player_photo/500_1789394657.jpeg', badge: {icon: '⛸️', label: 'Тренер по катанию у фигуристов'}},
             {name: 'Юрий Пресняков', number: 70, photo: 'https://lhl-77.ru/images/player_photo/500_1789394559.jpeg'},
             {name: 'Валерия Головань', number: 71, photo: 'https://lhl-77.ru/images/player_photo/500_1791575992.jpg', female: true},
-            {name: 'Алексей Клочков', number: 86, photo: 'https://lhl-77.ru/images/player_photo/500_1789393863.jpeg'},
+            {name: 'Алексей Клочков', number: 86, photo: 'https://lhl-77.ru/images/player_photo/500_1789393863.jpeg', badge: {icon: '🎸', label: 'Электрогитара'}},
             {name: 'Антон Киселёв', number: 90, photo: 'https://lhl-77.ru/images/player_photo/500_1789394407.jpeg'},
             {name: 'Фёдор Кирилкин', number: 98, photo: 'https://lhl-77.ru/images/player_photo/500_1791238308.jpg'}
         ],
