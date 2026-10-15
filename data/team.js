@@ -1,4 +1,5 @@
 export const team = {
+    contact: {name: 'Асипов Александр', phone: '+79261538733'},
     stats: {games: 6, wins: 2, losses: 4, draws: 0},
     roster: {
         'Вратари': [

@@ -36,4 +36,20 @@ document.querySelectorAll('.player-avatar img').forEach((image) => image.addEven
 $('#year').textContent = new Date().getFullYear();
 document.querySelector('.menu-toggle').addEventListener('click', (event) => { const open = event.currentTarget.getAttribute('aria-expanded') === 'true'; event.currentTarget.setAttribute('aria-expanded', String(!open)); $('#site-nav').classList.toggle('is-open', !open); });
 document.querySelectorAll('.site-nav a').forEach((link) => link.addEventListener('click', () => { $('#site-nav').classList.remove('is-open'); document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false'); }));
-document.querySelectorAll('[data-placeholder-link]').forEach((link) => link.addEventListener('click', (event) => { event.preventDefault(); }));
+const contactDialog = $('#contact-dialog');
+$('[data-captain-name]').textContent = team.contact.name;
+const captainPhone = $('[data-captain-phone]');
+captainPhone.textContent = team.contact.phone;
+captainPhone.href = `tel:${team.contact.phone}`;
+document.querySelectorAll('[data-contact-dialog]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    contactDialog.showModal();
+  });
+});
+contactDialog.addEventListener('click', (event) => {
+  const bounds = contactDialog.getBoundingClientRect();
+  if (event.target === contactDialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+    contactDialog.close();
+  }
+});
