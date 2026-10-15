@@ -37,5 +37,6 @@ export const team = {
             {name: 'Сергей Ширяев', number: 69, photo: 'https://lhl-77.ru/images/player_photo/500_1487962686.jpg'}
         ]
     },
-    coach: 'Андрей Малых'
+    coach: 'Андрей Малых',
+    coachPhoto: 'https://lhl-77.ru/images/player_photo/500_1788377347.jpg'
 };
