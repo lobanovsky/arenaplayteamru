@@ -21,7 +21,7 @@ export const team = {
             {name: 'Руслан Нагимов', number: 65, photo: 'https://lhl-77.ru/images/player_photo/500_1789500513.jpg'},
             {name: 'Иван Ведеров', number: 68, photo: 'https://lhl-77.ru/images/player_photo/500_1789394657.jpeg'},
             {name: 'Юрий Пресняков', number: 70, photo: 'https://lhl-77.ru/images/player_photo/500_1789394559.jpeg'},
-            {name: 'Валерия Головань', number: 71, photo: 'https://lhl-77.ru/images/player_photo/500_1791575992.jpg'},
+            {name: 'Валерия Головань', number: 71, photo: 'https://lhl-77.ru/images/player_photo/500_1791575992.jpg', female: true},
             {name: 'Алексей Клочков', number: 86, photo: 'https://lhl-77.ru/images/player_photo/500_1789393863.jpeg'},
             {name: 'Антон Киселёв', number: 90, photo: 'https://lhl-77.ru/images/player_photo/500_1789394407.jpeg'},
             {name: 'Фёдор Кирилкин', number: 98, photo: 'https://lhl-77.ru/images/player_photo/500_1791238308.jpg'}
@@ -31,7 +31,7 @@ export const team = {
             {name: 'Александр Терешенков', number: 10, photo: 'https://lhl-77.ru/images/player_photo/500_1791576143.jpg'},
             {name: 'Дмитрий Шайков', number: 39, photo: 'https://lhl-77.ru/images/player_team_photo/500_1789394230.jpeg'},
             {name: 'Дмитрий Иванцов', number: 53, photo: 'https://lhl-77.ru/images/player_photo/500_1789394346.jpeg'},
-            {name: 'Александр Асипов', number: 55, photo: 'https://lhl-77.ru/images/player_photo/500_1789393811.jpeg'},
+            {name: 'Александр Асипов', number: 55, photo: 'https://lhl-77.ru/images/player_photo/500_1789393811.jpeg', captain: true},
             {name: 'Николай Бордаков', number: 60, photo: 'https://lhl-77.ru/images/player_photo/500_1791576108.jpg'},
             {name: 'Никита Магницкий', number: 66, photo: 'https://lhl-77.ru/images/player_photo/500_1791575875.jpg'},
             {name: 'Сергей Ширяев', number: 69, photo: 'https://lhl-77.ru/images/player_photo/500_1487962686.jpg'}
