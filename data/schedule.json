@@ -1,21 +1,30 @@
 {
   "nextGame": {
-    "date": "17.10.2026",
-    "dateISO": "2026-10-17",
-    "time": "21:45",
-    "arena": "Апиа арена-2",
-    "opponent": "Легенда-Старт",
+    "date": "24.10.2026",
+    "dateISO": "2026-10-24",
+    "time": "19:45",
+    "arena": "Академия льда",
+    "opponent": "Линкор",
     "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
-    "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
+    "videoUrl": "https://vkvideo.ru/@lhl_77/all"
   },
   "results": [
+    {
+      "date": "24.10.2026",
+      "dateISO": "2026-10-24",
+      "opponent": "Линкор",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
     {
       "date": "17.10.2026",
       "dateISO": "2026-10-17",
       "opponent": "Легенда-Старт",
-      "score": "0 : 0",
-      "result": "scheduled",
-      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+      "score": "2 : 10",
+      "result": "loss",
+      "tournament": "ДЕБЮТАНТ",
       "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
     },
     {
@@ -26,15 +35,6 @@
       "result": "loss",
       "tournament": "ДЕБЮТАНТ",
       "videoUrl": "https://vkvideo.ru/live-71330880_456246255"
-    },
-    {
-      "date": "03.10.2026",
-      "dateISO": "2026-10-03",
-      "opponent": "Крылья Столицы",
-      "score": "3 : 6",
-      "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
-      "videoUrl": "https://vkvideo.ru/live-71330880_456246200"
     }
   ]
 }
