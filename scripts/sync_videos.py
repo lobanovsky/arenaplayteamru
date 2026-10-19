@@ -105,11 +105,12 @@ def fetch_videos():
 
 
 def attach_videos(schedule, videos):
-    for game in schedule["results"]:
+    matches = [*schedule.get("allMatches", []), *schedule["results"]]
+    for game in matches:
         if not game.get("videoUrl") or game["videoUrl"] == VIDEO_CATALOG:
             game["videoUrl"] = find_video(game, videos) or VIDEO_CATALOG
     upcoming = schedule["nextGame"]
-    matching = next((game for game in schedule["results"]
+    matching = next((game for game in matches
                      if game["dateISO"] == upcoming["dateISO"]
                      and title_key(game["opponent"]) == title_key(upcoming["opponent"])), None)
     upcoming["videoUrl"] = (matching or {}).get("videoUrl") or find_video(upcoming, videos) or upcoming.get("videoUrl") or VIDEO_CATALOG

@@ -5,6 +5,16 @@ from sync_videos import VIDEO_CATALOG, attach_videos, find_video, parse_videos
 
 
 class VideoSyncTests(unittest.TestCase):
+    def test_video_is_attached_to_qualification_in_full_archive(self):
+        qualification = {"dateISO": "2026-09-12", "opponent": "ФедКо"}
+        upcoming = {"dateISO": "2026-10-24", "opponent": "Линкор"}
+        schedule = {"nextGame": upcoming, "results": [], "allMatches": [qualification, dict(upcoming)]}
+        url = "https://vkvideo.ru/video-71330880_123"
+        attach_videos(schedule, [{"title": "ФедКо — Arena Play", "date": "2026-09-12", "url": url}])
+        self.assertEqual(qualification["videoUrl"], url)
+        attach_videos(schedule, [])
+        self.assertEqual(qualification["videoUrl"], url)
+
     def test_catalog_metadata_and_matching_reversed_teams(self):
         page = '<script type="application/ld+json">' + json.dumps({
             "@type": "VideoGallery", "video": [{"@type": "VideoObject",

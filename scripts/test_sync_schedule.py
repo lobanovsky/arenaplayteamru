@@ -25,6 +25,32 @@ def page(upcoming, completed=()):
 
 
 class ScheduleSyncTests(unittest.TestCase):
+    def test_full_archive_keeps_qualification_and_every_upcoming_match(self):
+        current = {"nextGame": {}, "results": []}
+        games = parse_games(page(
+            [row("24/10/2026", "20:15", "Лёд", "Arena Play", "0:0", "Первый"),
+             row("31/10/2026", "19:00", "Лёд", "Arena Play", "0:0", "Второй")],
+            [row("17/10/2026", "21:45", "Арена", "Arena Play", "2:10", "Легенда"),
+             row("11/10/2026", "18:15", "Арена", "Arena Play", "1:2", "Grizzly team"),
+             row("03/10/2026", "09:45", "Арена", "Arena Play", "3:6", "Крылья"),
+             row("12/09/2026", "21:45", "Арена", "ФедКо", "3:5", "Arena Play")],
+        ))
+        games[-1]["tournament"] = "КВАЛИФИКАЦИЯ"
+        updated = update_schedule(current, games, datetime(2026, 10, 19, 7, tzinfo=MOSCOW))
+        self.assertEqual(len(updated["results"]), 3)
+        self.assertEqual(len(updated["allMatches"]), 6)
+        self.assertEqual(sum(game["result"] == "scheduled" for game in updated["allMatches"]), 2)
+        qualification = next(game for game in updated["allMatches"] if game["tournament"] == "КВАЛИФИКАЦИЯ")
+        self.assertEqual(qualification["score"], "5 : 3")
+        self.assertEqual(qualification["result"], "win")
+        self.assertEqual(qualification["time"], "21:45")
+        # Повторная синхронизация не обрезает архив и не теряет старую ссылку на видео.
+        qualification["videoUrl"] = "https://vkvideo.ru/video-71330880_123"
+        again = update_schedule(updated, games[:3], datetime(2026, 10, 19, 13, tzinfo=MOSCOW))
+        archived = next(game for game in again["allMatches"] if game["opponent"] == "ФедКо")
+        self.assertEqual(archived["videoUrl"], qualification["videoUrl"])
+        self.assertEqual(len(again["allMatches"]), 6)
+
     def test_parse_home_and_away_rows_and_scores_from_team_perspective(self):
         games = parse_games(page(
             [row("17/10/2026", "21:45", "АПИА АРЕНА-2", "Arena Play", "", "ЛЕГЕНДА-СТАРТ")],

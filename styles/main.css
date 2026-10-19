@@ -44,3 +44,31 @@
 }
 
 .player-card .player-badge{display:inline-grid;place-items:center;flex-shrink:0;width:21px;height:21px;font-size:16px;line-height:1;text-transform:none}
+
+.panel-title button { border: 0; padding: 8px 0 8px 12px; background: transparent; font-family: inherit; cursor: pointer; white-space: nowrap; }
+.panel-title button:hover { color: var(--ice); }
+body:has(dialog[open]) { overflow: hidden; }
+.matches-dialog { width: min(860px, calc(100% - 32px)); max-height: 85vh; max-height: 85dvh; padding: 0; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
+.matches-dialog::backdrop { background: rgba(0, 0, 0, .8); }
+.matches-header { position: sticky; top: 0; z-index: 1; padding: 28px 72px 22px 32px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.matches-header .eyebrow { margin-bottom: 8px; }
+.matches-header h2 { font-size: 44px; line-height: 1.1; margin-bottom: 10px; }
+.matches-header > p:last-child { margin: 0; font-size: 12px; color: var(--muted); }
+.matches-dialog .dialog-close { position: absolute; top: 16px; right: 16px; float: none; margin: 0; }
+.all-matches-list { padding: 12px 32px 28px; }
+.matches-section + .matches-section { margin-top: 30px; }
+.matches-section h3 { display: flex; align-items: center; gap: 12px; padding-top: 16px; margin-bottom: 0; font-size: 24px; }
+.matches-section h3 span { font: 600 12px Manrope, sans-serif; color: var(--muted); }
+.matches-dialog .result-row { grid-template-columns: 96px minmax(0, 1fr) 72px; padding: 20px 0; }
+.matches-dialog .result-row > span small { display: block; margin-top: 4px; font-size: 10px; }
+.match-details { color: var(--muted); font-size: 10px; overflow-wrap: anywhere; }
+.result-row .match-status { font: 700 11px Manrope, sans-serif; color: var(--ice); }
+.matches-empty { margin: 24px 0; font-size: 13px; color: var(--muted); }
+@media (max-width: 600px) {
+  .matches-header { padding: 24px 58px 20px 18px; }
+  .matches-header h2 { font-size: 36px; }
+  .matches-dialog .dialog-close { top: 10px; right: 8px; }
+  .all-matches-list { padding: 8px 18px 24px; }
+  .matches-dialog .result-row { grid-template-columns: 66px minmax(0, 1fr) 62px; gap: 10px; }
+  .matches-dialog .result-match { min-width: 0; overflow-wrap: anywhere; }
+}

@@ -12,6 +12,8 @@
     {
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
+      "time": "19:45",
+      "arena": "Академия льда",
       "opponent": "Линкор",
       "score": "0 : 0",
       "result": "scheduled",
@@ -21,6 +23,8 @@
     {
       "date": "17.10.2026",
       "dateISO": "2026-10-17",
+      "time": "21:45",
+      "arena": "Апиа арена-2",
       "opponent": "Легенда-Старт",
       "score": "2 : 10",
       "result": "loss",
@@ -30,11 +34,103 @@
     {
       "date": "11.10.2026",
       "dateISO": "2026-10-11",
+      "time": "18:15",
+      "arena": "Созвездие",
       "opponent": "Grizzly team",
       "score": "1 : 2",
       "result": "loss",
       "tournament": "ДЕБЮТАНТ",
       "videoUrl": "https://vkvideo.ru/live-71330880_456246255"
+    }
+  ],
+  "allMatches": [
+    {
+      "date": "24.10.2026",
+      "dateISO": "2026-10-24",
+      "time": "19:45",
+      "arena": "Академия льда",
+      "opponent": "Линкор",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
+    {
+      "date": "17.10.2026",
+      "dateISO": "2026-10-17",
+      "time": "21:45",
+      "arena": "Апиа арена-2",
+      "opponent": "Легенда-Старт",
+      "score": "2 : 10",
+      "result": "loss",
+      "tournament": "ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
+    },
+    {
+      "date": "11.10.2026",
+      "dateISO": "2026-10-11",
+      "time": "18:15",
+      "arena": "Созвездие",
+      "opponent": "Grizzly team",
+      "score": "1 : 2",
+      "result": "loss",
+      "tournament": "ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/live-71330880_456246255"
+    },
+    {
+      "date": "03.10.2026",
+      "dateISO": "2026-10-03",
+      "time": "09:45",
+      "arena": "Академия льда",
+      "opponent": "Крылья Столицы",
+      "score": "3 : 6",
+      "result": "loss",
+      "tournament": "ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
+    {
+      "date": "27.09.2026",
+      "dateISO": "2026-09-27",
+      "time": "18:00",
+      "arena": "Апиа арена-2",
+      "opponent": "Галс",
+      "score": "4 : 5",
+      "result": "loss",
+      "tournament": "ДИВИЗИОН В",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
+    {
+      "date": "20.09.2026",
+      "dateISO": "2026-09-20",
+      "time": "16:15",
+      "arena": "Апиа арена",
+      "opponent": "HB HDCR",
+      "score": "3 : 2",
+      "result": "win",
+      "tournament": "ДИВИЗИОН В",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
+    {
+      "date": "12.09.2026",
+      "dateISO": "2026-09-12",
+      "time": "21:45",
+      "arena": "Апиа арена-2",
+      "opponent": "ФедКо",
+      "score": "5 : 3",
+      "result": "win",
+      "tournament": "КВАЛИФИКАЦИЯ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
+    {
+      "date": "05.09.2026",
+      "dateISO": "2026-09-05",
+      "time": "20:15",
+      "arena": "Апиа арена-2",
+      "opponent": "Краномонтаж",
+      "score": "2 : 6",
+      "result": "loss",
+      "tournament": "КВАЛИФИКАЦИЯ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
     }
   ]
 }

@@ -22,11 +22,25 @@ const upcomingVideo = nextGame.videoUrl || videoCatalog;
 banner.setAttribute('aria-label', `Ближайшая игра Arena Play: ${nextGame.opponent}, ${displayDate(nextGame.dateISO)} в ${nextGame.time}. Страница команды в ЛХЛ-77`);
 banner.innerHTML = `<span><span class="live-dot"></span> Ближайшая игра</span><a href="https://lhl-77.ru/clubs/686" target="_blank" rel="noopener noreferrer"><strong>Arena Play — ${escapeHTML(nextGame.opponent)} · ${displayDate(nextGame.dateISO)}, ${escapeHTML(nextGame.time)}</strong></a><a class="banner-video" href="${escapeHTML(upcomingVideo)}" target="_blank" rel="noopener noreferrer">${upcomingVideo === videoCatalog ? 'Все видео ЛХЛ-77' : 'Смотреть трансляцию'} ↗</a>`;
 
-$('#results-list').innerHTML = schedule.results.map((game) => {
+const allMatches = schedule.allMatches || schedule.results;
+const isPlayed = (game) => ['win', 'loss', 'draw'].includes(game.result);
+const playedMatches = allMatches.filter(isPlayed).sort((a, b) => b.dateISO.localeCompare(a.dateISO));
+const upcomingMatches = allMatches.filter((game) => game.result === 'scheduled').sort((a, b) => a.dateISO.localeCompare(b.dateISO) || (a.time || '').localeCompare(b.time || ''));
+const pendingMatches = allMatches.filter((game) => game.result === 'pending');
+const renderMatch = (game, detailed = false) => {
   const videoUrl = game.videoUrl || videoCatalog;
   const videoLabel = videoUrl === videoCatalog ? 'Все видео ЛХЛ-77' : game.result === 'scheduled' ? 'Смотреть трансляцию' : 'Смотреть видео';
-  return `<div class="result-row"><span>${escapeHTML(game.date)}</span><div class="result-match"><b>Arena Play — ${escapeHTML(game.opponent)}</b><a class="result-video" href="${escapeHTML(videoUrl)}" target="_blank" rel="noopener noreferrer">${videoLabel} ↗</a></div><strong class="${escapeHTML(game.result)}">${escapeHTML(game.score)}</strong></div>`;
-}).join('');
+  const status = game.result === 'scheduled' ? 'Предстоит' : game.result === 'pending' ? 'Ждём счёт' : game.score;
+  const details = detailed ? `<span class="match-details">${[game.tournament, game.arena].filter(Boolean).map(escapeHTML).join(' · ')}</span>` : '';
+  const time = detailed && game.time ? `<small>${escapeHTML(game.time)} МСК</small>` : '';
+  return `<div class="result-row"><span><time datetime="${escapeHTML(game.dateISO)}">${escapeHTML(game.date)}</time>${time}</span><div class="result-match"><b>Arena Play — ${escapeHTML(game.opponent)}</b>${details}<a class="result-video" href="${escapeHTML(videoUrl)}" target="_blank" rel="noopener noreferrer">${videoLabel} ↗</a></div><strong class="${escapeHTML(game.result)}${isPlayed(game) ? '' : ' match-status'}">${escapeHTML(status)}</strong></div>`;
+};
+$('#results-list').innerHTML = playedMatches.slice(0, 3).map((game) => renderMatch(game)).join('') || '<p class="matches-empty">Результаты появятся после первых матчей.</p>';
+const matchSection = (title, games) => games.length ? `<section class="matches-section"><h3>${title}<span>${games.length}</span></h3>${games.map((game) => renderMatch(game, true)).join('')}</section>` : '';
+$('#all-matches-list').innerHTML = matchSection('Предстоящие игры', upcomingMatches) + matchSection('Ожидаем результат', pendingMatches) + matchSection('Сыгранные матчи', playedMatches) || '<p class="matches-empty">Расписание пока не опубликовано.</p>';
+$('#matches-summary').textContent = `Сыграно — ${playedMatches.length} · Предстоит — ${upcomingMatches.length}. Включая квалификацию.`;
+const matchesDialog = $('#matches-dialog');
+$('[data-matches-dialog]').addEventListener('click', () => matchesDialog.showModal());
 
 const positionLabels = {'Вратари': 'Вратарь', 'Нападающие': 'Нападающий', 'Защитники': 'Защитник'};
 $('#roster-list').innerHTML = Object.entries(team.roster).map(([position, players]) => `<div class="roster-group"><div class="roster-group-heading"><h3>${position}</h3><span>${players.length}</span></div>${players.map((player) => `<article class="player-card"><div class="player-avatar">${initials(player.name)}${player.photo ? `<img src="${escapeHTML(player.photo)}" alt="" loading="lazy" />` : ''}</div><div><h4>${player.name}${player.captain ? '<span class="captain-badge" aria-label="Капитан" title="Капитан">К</span>' : ''}${player.female ? '<span class="female-badge" role="img" aria-label="Девушка в команде" title="Валерия Головань">♥</span>' : ''}${player.badge ? `<span class="player-badge" role="img" aria-label="${escapeHTML(player.badge.label)}" title="${escapeHTML(player.badge.label)}">${escapeHTML(player.badge.icon)}</span>` : ''}</h4><span>${positionLabels[position]}</span></div><strong>#${player.number}</strong></article>`).join('')}</div>`).join('') + `<div class="coach-card"><div class="player-avatar">${initials(team.coach)}${team.coachPhoto ? `<img src="${escapeHTML(team.coachPhoto)}" alt="" loading="lazy" />` : ''}</div><span class="eyebrow">Главный тренер</span><strong>${team.coach}</strong></div>`;
@@ -47,9 +61,9 @@ document.querySelectorAll('[data-contact-dialog]').forEach((link) => {
     contactDialog.showModal();
   });
 });
-contactDialog.addEventListener('click', (event) => {
-  const bounds = contactDialog.getBoundingClientRect();
-  if (event.target === contactDialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) {
-    contactDialog.close();
+[contactDialog, matchesDialog].forEach((dialog) => dialog.addEventListener('click', (event) => {
+  const bounds = dialog.getBoundingClientRect();
+  if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+    dialog.close();
   }
-});
+}));

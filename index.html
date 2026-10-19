@@ -59,7 +59,7 @@
         <div class="section-heading"><p class="eyebrow">На льду</p><h2>Матчи</h2><p>Следим за игрой и держим ритм сезона.</p></div>
         <div class="games-grid">
           <article class="next-game" id="next-game"></article>
-          <div class="results-panel"><div class="panel-title"><h3>Последние результаты</h3><a href="#contacts">Все матчи →</a></div><div id="results-list" class="results-list"></div></div>
+          <div class="results-panel"><div class="panel-title"><h3>Последние результаты</h3><button type="button" class="text-link" data-matches-dialog aria-haspopup="dialog" aria-controls="matches-dialog">Все матчи →</button></div><div id="results-list" class="results-list"></div></div>
         </div>
       </section>
 
@@ -71,6 +71,15 @@
     </main>
 
     <footer id="contacts" class="site-footer"><div class="section-shell footer-grid"><div><a class="brand" href="#top"><img src="/assets/logo.svg" alt="" width="42" height="42" /><span>Arena <b>Play</b></span></a><p>Любительская хоккейная команда<br />Москва · ЛХЛ-77</p></div><div><p class="footer-label">На связи</p><a href="#contact-dialog" data-contact-dialog aria-haspopup="dialog" aria-controls="contact-dialog">Telegram</a><a href="#contact-dialog" data-contact-dialog aria-haspopup="dialog" aria-controls="contact-dialog">ВКонтакте</a><a href="#contact-dialog" data-contact-dialog aria-haspopup="dialog" aria-controls="contact-dialog">email</a></div><div><p class="footer-label">Навигация</p><a href="#team">О команде</a><a href="#games">Матчи</a><a href="#roster">Состав</a></div></div><div class="section-shell footer-bottom"><span>© <span id="year"></span> Arena Play</span><a href="https://lobanovsky.ru" target="_blank" rel="noopener noreferrer">Сделано в бюро Лобановского ↗</a><a href="https://lhl-77.ru/clubs/686" target="_blank" rel="noreferrer">Страница команды в ЛХЛ-77 ↗</a></div></footer>
+    <dialog id="matches-dialog" class="matches-dialog" aria-labelledby="matches-title">
+      <header class="matches-header">
+        <form method="dialog"><button class="dialog-close" aria-label="Закрыть список матчей" autofocus>×</button></form>
+        <p class="eyebrow">Календарь команды</p>
+        <h2 id="matches-title">Все матчи</h2>
+        <p id="matches-summary">Расписание и результаты, включая квалификацию.</p>
+      </header>
+      <div id="all-matches-list" class="all-matches-list"></div>
+    </dialog>
     <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-title">
       <form method="dialog"><button class="dialog-close" aria-label="Закрыть" autofocus>×</button></form>
       <p class="eyebrow">Связаться с командой</p>

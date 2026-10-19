@@ -158,7 +158,8 @@ def game_key(game: dict) -> tuple[str, str]:
 
 def update_schedule(current: dict, games: list[dict], now: datetime) -> dict:
     current_results = current.get("results", [])
-    prior_by_key = {game_key(game): game for game in current_results}
+    current_matches = [*current.get("allMatches", []), *current_results]
+    prior_by_key = {game_key(game): game for game in current_matches}
     moment = now.astimezone(MOSCOW)
     upcoming = []
     completed = []
@@ -177,6 +178,8 @@ def update_schedule(current: dict, games: list[dict], now: datetime) -> dict:
         return {
             "date": game["date"],
             "dateISO": game["dateISO"],
+            "time": game["time"],
+            "arena": game["arena"],
             "opponent": game["opponent"],
             "score": game["score"] if status != "scheduled" else "0 : 0",
             "result": game["result"] if status != "scheduled" else "scheduled",
@@ -185,7 +188,7 @@ def update_schedule(current: dict, games: list[dict], now: datetime) -> dict:
         }
 
     history_by_key: dict[tuple[str, str], dict] = {}
-    for old in current_results:
+    for old in current_matches:
         if old.get("result") != "scheduled":
             history_by_key[game_key(old)] = old
     for game in completed:
@@ -209,7 +212,18 @@ def update_schedule(current: dict, games: list[dict], now: datetime) -> dict:
             if old.get("result") == "scheduled" and game_key(old) not in history_by_key:
                 results.append(old)
         results = sorted(results, key=lambda game: game.get("dateISO", ""), reverse=True)[:3]
-    return {"nextGame": next_game, "results": results}
+    all_by_key = {game_key(game): game for game in history_by_key.values()}
+    for game in upcoming:
+        all_by_key[game_key(game)] = result_record(game, "scheduled")
+    # Прошедший матч без опубликованного счёта не выдаём за сыгранный или будущий.
+    for game in games:
+        key = game_key(game)
+        if key not in all_by_key:
+            record = result_record(game, "finished")
+            record.update(result="pending", score=None)
+            all_by_key[key] = record
+    all_matches = sorted(all_by_key.values(), key=lambda game: (game.get("dateISO", ""), game.get("time", "")), reverse=True)
+    return {"nextGame": next_game, "results": results, "allMatches": all_matches}
 
 
 def fetch_page() -> str:
