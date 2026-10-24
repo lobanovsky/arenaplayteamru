@@ -244,7 +244,7 @@ def main() -> int:
         try:
             videos = fetch_videos()
         except Exception as error:
-            print(f"VK Видео недоступно, используем сохранённые ссылки или каталог: {error}", file=sys.stderr)
+            print(f"Каталоги видео недоступны, используем сохранённые ссылки или каталог: {error}", file=sys.stderr)
             videos = []
         attach_videos(updated, videos)
         serialized = json.dumps(updated, ensure_ascii=False, indent=2) + "\n"

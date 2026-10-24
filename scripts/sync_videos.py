@@ -1,7 +1,8 @@
-"""Находит записи матчей в публичном каталоге VK Видео."""
+"""Находит записи матчей в публичных каталогах Rutube и VK Видео."""
 
 import json
 import re
+import sys
 from datetime import date, timedelta
 from html import unescape
 from html.parser import HTMLParser
@@ -10,6 +11,20 @@ from urllib.request import HTTPCookieProcessor, Request, build_opener
 
 VIDEO_CATALOG = "https://vkvideo.ru/@lhl_77/all"
 OWNER_CATALOG = "https://vkvideo.ru/videos-71330880"
+RUTUBE_API = "https://rutube.ru/api/video/person/35268475/"
+
+
+def parse_rutube_videos(payload):
+    videos = []
+    for item in payload.get("results", []):
+        url = item.get("video_url", "")
+        if (item.get("author", {}).get("id") != 35268475
+                or item.get("is_deleted") or item.get("is_hidden")
+                or not re.fullmatch(r"https://rutube\.ru/video/[a-f0-9]{32}/", url)):
+            continue
+        videos.append({"title": item.get("title", ""), "url": url,
+                       "date": item.get("publication_ts") or item.get("created_ts", "")})
+    return videos
 
 
 class VideoParser(HTMLParser):
@@ -84,6 +99,9 @@ def find_video(game, videos):
         return None
     best_distance = min(candidates.values())
     best = [url for url, distance in candidates.items() if distance == best_distance]
+    rutube = [url for url in best if url.startswith("https://rutube.ru/video/")]
+    if rutube:
+        best = rutube
     return best[0] if len(best) == 1 else None
 
 
@@ -91,6 +109,17 @@ def fetch_videos():
     opener = build_opener(HTTPCookieProcessor(CookieJar()))
     videos = []
     errors = []
+    # Ограничиваем глубину каталога, чтобы обновление не обходило весь архив лиги.
+    for page in range(1, 4):
+        try:
+            with opener.open(Request(f"{RUTUBE_API}?page={page}", headers={"User-Agent": "ArenaPlayScheduleBot/1.0"}), timeout=25) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+            videos.extend(parse_rutube_videos(payload))
+            if not payload.get("has_next"):
+                break
+        except Exception as error:
+            errors.append(f"Rutube: {error}")
+            break
     for url in (VIDEO_CATALOG, OWNER_CATALOG):
         request = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"})
         try:
@@ -99,8 +128,10 @@ def fetch_videos():
                 videos.extend(parse_videos(response.read().decode(charset)))
         except Exception as error:
             errors.append(str(error))
-    if not videos and errors:
-        raise RuntimeError("; ".join(errors))
+    if not videos:
+        raise RuntimeError("; ".join(errors) or "В каталогах Rutube и VK Видео не найдены метаданные видео")
+    if errors:
+        print("Часть каталогов видео недоступна: " + "; ".join(errors), file=sys.stderr)
     return videos
 
 

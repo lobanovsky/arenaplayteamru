@@ -1,10 +1,30 @@
 import json
 import unittest
 
-from sync_videos import VIDEO_CATALOG, attach_videos, find_video, parse_videos
+from sync_videos import VIDEO_CATALOG, attach_videos, find_video, parse_videos, parse_rutube_videos
 
 
 class VideoSyncTests(unittest.TestCase):
+    def test_rutube_broadcast_is_matched_and_preferred_over_vk(self):
+        url = "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"
+        item = {"author": {"id": 35268475}, "title": "Arena Play - Линкор",
+                "video_url": url, "publication_ts": "2026-10-22T23:02:30"}
+        videos = parse_rutube_videos({"results": [item]})
+        game = {"dateISO": "2026-10-24", "opponent": "Линкор"}
+        vk = dict(videos[0], url="https://vkvideo.ru/live-71330880_456246354")
+        self.assertEqual(find_video(game, [vk, *videos]), url)
+        schedule = {"nextGame": dict(game), "results": [dict(game)], "allMatches": [dict(game)]}
+        attach_videos(schedule, videos)
+        for match in [schedule["nextGame"], *schedule["results"], *schedule["allMatches"]]:
+            self.assertEqual(match["videoUrl"], url)
+
+    def test_rutube_rejects_foreign_deleted_and_invalid_videos(self):
+        item = {"author": {"id": 35268475}, "title": "Arena Play - Линкор",
+                "video_url": "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"}
+        self.assertEqual(parse_rutube_videos({"results": [
+            dict(item, author={"id": 1}), dict(item, is_deleted=True),
+            dict(item, is_hidden=True), dict(item, video_url="https://example.com/")]}), [])
+
     def test_video_is_attached_to_qualification_in_full_archive(self):
         qualification = {"dateISO": "2026-09-12", "opponent": "ФедКо"}
         upcoming = {"dateISO": "2026-10-24", "opponent": "Линкор"}
