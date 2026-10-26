@@ -1,14 +1,25 @@
 {
   "nextGame": {
-    "date": "24.10.2026",
-    "dateISO": "2026-10-24",
-    "time": "19:45",
+    "date": "01.11.2026",
+    "dateISO": "2026-11-01",
+    "time": "21:45",
     "arena": "Академия льда",
-    "opponent": "Линкор",
+    "opponent": "Lightning",
     "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
-    "videoUrl": "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"
+    "videoUrl": "https://vkvideo.ru/@lhl_77/all"
   },
   "results": [
+    {
+      "date": "01.11.2026",
+      "dateISO": "2026-11-01",
+      "time": "21:45",
+      "arena": "Академия льда",
+      "opponent": "Lightning",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
     {
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
@@ -30,20 +41,20 @@
       "result": "loss",
       "tournament": "ДЕБЮТАНТ",
       "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
-    },
-    {
-      "date": "11.10.2026",
-      "dateISO": "2026-10-11",
-      "time": "18:15",
-      "arena": "Созвездие",
-      "opponent": "Grizzly team",
-      "score": "1 : 2",
-      "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
-      "videoUrl": "https://vkvideo.ru/live-71330880_456246255"
     }
   ],
   "allMatches": [
+    {
+      "date": "01.11.2026",
+      "dateISO": "2026-11-01",
+      "time": "21:45",
+      "arena": "Академия льда",
+      "opponent": "Lightning",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
     {
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
