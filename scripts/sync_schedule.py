@@ -15,7 +15,7 @@ from sync_videos import attach_videos, fetch_videos
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEDULE_PATH = ROOT / "data" / "schedule.json"
-CLUB_URL = "https://lhl-77.ru/clubs/686"
+CLUB_URL = "https://lhl-77.ru/teams/686?tab=games"
 MOSCOW = ZoneInfo("Europe/Moscow")
 TEAM_NAME = "arena play"
 SCORE_RE = re.compile(r"^\s*(\d+)\s*[:\-]\s*(\d+)\s*$")
@@ -72,6 +72,52 @@ class TableParser(HTMLParser):
             self.heading_text.append(data)
 
 
+def parse_game_entries(page: str) -> list[dict]:
+    # Карточки имеют устойчивые CSS-классы; разбираем каждую отдельно, чтобы
+    # вложенные span со счётом и LIVE-индикатором не смешивали значения.
+    games = []
+    chunks = []
+    start = 0
+    while True:
+        marker = page.find('<div class="game-entry">', start)
+        if marker < 0:
+            break
+        end = page.find('<div class="game-entry">', marker + 1)
+        if end < 0:
+            end = page.find('<!-- Tab:', marker + 1)
+            if end < 0:
+                end = len(page)
+        chunks.append(page[marker:end])
+        start = end
+    for chunk in chunks:
+        date_match = re.search(r'game-entry__date-day">(\d{2}\.\d{2}\.\d{4})', chunk)
+        time_match = re.search(r'game-entry__date-time">\s*(\d{1,2}:\d{2})', chunk)
+        teams = re.findall(r'class="game-entry__team-name">\s*(.*?)\s*</a>', chunk, re.S)
+        scores = re.findall(r'data-live-part="(?:home|away)"[^>]*>\s*(?:<!--.*?-->\s*)*(\d+)', chunk, re.S)
+        arena_match = re.search(r'game-entry__venue[^>]*>.*?<span>(.*?)</span>', chunk, re.S)
+        if not date_match or not time_match or len(teams) != 2:
+            continue
+        game_date = parse_date(date_match.group(1))
+        if not game_date:
+            continue
+        home, away = (re.sub(r"<[^>]+>", "", name).strip() for name in teams)
+        if normalize(home) != TEAM_NAME and normalize(away) != TEAM_NAME:
+            continue
+        own_is_home = normalize(home) == TEAM_NAME
+        score = None
+        result = None
+        if len(scores) == 2:
+            own, opponent_score = (int(scores[0]), int(scores[1])) if own_is_home else (int(scores[1]), int(scores[0]))
+            score = f"{own} : {opponent_score}"
+            result = "win" if own > opponent_score else "loss" if own < opponent_score else "draw"
+        games.append({"date": game_date.strftime("%d.%m.%Y"), "dateISO": game_date.isoformat(),
+                      "time": time_match.group(1).zfill(5), "arena": re.sub(r"<[^>]+>", "", arena_match.group(1)).strip() if arena_match else "",
+                      "opponent": away if own_is_home else home, "score": score, "result": result,
+                      "tournament": "ЛХЛ-77", "isUpcomingTable": False})
+    return games
+
+
+
 def normalize(value: str) -> str:
     return " ".join(value.replace("ё", "е").casefold().split())
 
@@ -103,6 +149,8 @@ def parse_date(value: str) -> date | None:
 
 
 def parse_games(page: str) -> list[dict]:
+    if "game-entry__team-name" in page:
+        return parse_game_entries(page)
     parser = TableParser()
     parser.feed(page)
     games: list[dict] = []
