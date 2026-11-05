@@ -6,7 +6,7 @@
     "arena": "Академия льда",
     "opponent": "Lightning",
     "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
-    "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    "videoUrl": "https://rutube.ru/video/60659d480d1f525c64f2a314dbf2cb6d/"
   },
   "results": [
     {
@@ -15,31 +15,31 @@
       "time": "21:45",
       "arena": "Академия льда",
       "opponent": "Lightning",
-      "score": "0 : 0",
-      "result": "scheduled",
-      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
-      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+      "score": "4 : 2",
+      "result": "win",
+      "tournament": "ЛХЛ-77",
+      "videoUrl": "https://rutube.ru/video/60659d480d1f525c64f2a314dbf2cb6d/"
     },
     {
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
       "time": "19:45",
-      "arena": "Академия льда",
+      "arena": "",
       "opponent": "Линкор",
       "score": "3 : 4",
       "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"
     },
     {
       "date": "17.10.2026",
       "dateISO": "2026-10-17",
       "time": "21:45",
-      "arena": "Апиа арена-2",
+      "arena": "",
       "opponent": "Легенда-Старт",
       "score": "2 : 10",
       "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
     }
   ],
@@ -50,31 +50,31 @@
       "time": "21:45",
       "arena": "Академия льда",
       "opponent": "Lightning",
-      "score": "0 : 0",
-      "result": "scheduled",
-      "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
-      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+      "score": "4 : 2",
+      "result": "win",
+      "tournament": "ЛХЛ-77",
+      "videoUrl": "https://rutube.ru/video/60659d480d1f525c64f2a314dbf2cb6d/"
     },
     {
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
       "time": "19:45",
-      "arena": "Академия льда",
+      "arena": "",
       "opponent": "Линкор",
       "score": "3 : 4",
       "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"
     },
     {
       "date": "17.10.2026",
       "dateISO": "2026-10-17",
       "time": "21:45",
-      "arena": "Апиа арена-2",
+      "arena": "",
       "opponent": "Легенда-Старт",
       "score": "2 : 10",
       "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
     },
     {
@@ -85,7 +85,7 @@
       "opponent": "Grizzly team",
       "score": "1 : 2",
       "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/live-71330880_456246255"
     },
     {
@@ -96,7 +96,7 @@
       "opponent": "Крылья Столицы",
       "score": "3 : 6",
       "result": "loss",
-      "tournament": "ДЕБЮТАНТ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/@lhl_77/all"
     },
     {
@@ -107,7 +107,7 @@
       "opponent": "Галс",
       "score": "4 : 5",
       "result": "loss",
-      "tournament": "ДИВИЗИОН В",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/@lhl_77/all"
     },
     {
@@ -118,7 +118,7 @@
       "opponent": "HB HDCR",
       "score": "3 : 2",
       "result": "win",
-      "tournament": "ДИВИЗИОН В",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/@lhl_77/all"
     },
     {
@@ -129,7 +129,7 @@
       "opponent": "ФедКо",
       "score": "5 : 3",
       "result": "win",
-      "tournament": "КВАЛИФИКАЦИЯ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/@lhl_77/all"
     },
     {
@@ -140,7 +140,7 @@
       "opponent": "Краномонтаж",
       "score": "2 : 6",
       "result": "loss",
-      "tournament": "КВАЛИФИКАЦИЯ",
+      "tournament": "ЛХЛ-77",
       "videoUrl": "https://vkvideo.ru/@lhl_77/all"
     }
   ]
