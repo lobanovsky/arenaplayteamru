@@ -1,14 +1,25 @@
 {
   "nextGame": {
-    "date": "01.11.2026",
-    "dateISO": "2026-11-01",
-    "time": "21:45",
+    "date": "08.11.2026",
+    "dateISO": "2026-11-08",
+    "time": "09:45",
     "arena": "Академия льда",
-    "opponent": "Lightning",
-    "tournament": "13-й ЧЕМПИОНАТ г. МОСКВЫ ЛХЛ-77 ДЕБЮТАНТ",
-    "videoUrl": "https://rutube.ru/video/60659d480d1f525c64f2a314dbf2cb6d/"
+    "opponent": "Краномонтаж",
+    "tournament": "ЛХЛ-77",
+    "videoUrl": "https://rutube.ru/video/ba75fb2b735bcb99e654f132e205445b/"
   },
   "results": [
+    {
+      "date": "08.11.2026",
+      "dateISO": "2026-11-08",
+      "time": "09:45",
+      "arena": "Академия льда",
+      "opponent": "Краномонтаж",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "ЛХЛ-77",
+      "videoUrl": "https://rutube.ru/video/ba75fb2b735bcb99e654f132e205445b/"
+    },
     {
       "date": "01.11.2026",
       "dateISO": "2026-11-01",
@@ -24,27 +35,27 @@
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
       "time": "19:45",
-      "arena": "",
+      "arena": "Академия льда",
       "opponent": "Линкор",
       "score": "3 : 4",
       "result": "loss",
       "tournament": "ЛХЛ-77",
       "videoUrl": "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"
-    },
-    {
-      "date": "17.10.2026",
-      "dateISO": "2026-10-17",
-      "time": "21:45",
-      "arena": "",
-      "opponent": "Легенда-Старт",
-      "score": "2 : 10",
-      "result": "loss",
-      "tournament": "ЛХЛ-77",
-      "videoUrl": "https://vkvideo.ru/video-71330880_456246295"
     }
   ],
   "allMatches": [
     {
+      "date": "08.11.2026",
+      "dateISO": "2026-11-08",
+      "time": "09:45",
+      "arena": "Академия льда",
+      "opponent": "Краномонтаж",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "ЛХЛ-77",
+      "videoUrl": "https://rutube.ru/video/ba75fb2b735bcb99e654f132e205445b/"
+    },
+    {
       "date": "01.11.2026",
       "dateISO": "2026-11-01",
       "time": "21:45",
@@ -59,7 +70,7 @@
       "date": "24.10.2026",
       "dateISO": "2026-10-24",
       "time": "19:45",
-      "arena": "",
+      "arena": "Академия льда",
       "opponent": "Линкор",
       "score": "3 : 4",
       "result": "loss",
@@ -70,7 +81,7 @@
       "date": "17.10.2026",
       "dateISO": "2026-10-17",
       "time": "21:45",
-      "arena": "",
+      "arena": "Апиа арена-2",
       "opponent": "Легенда-Старт",
       "score": "2 : 10",
       "result": "loss",
