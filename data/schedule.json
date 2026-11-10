@@ -1,14 +1,25 @@
 {
   "nextGame": {
-    "date": "08.11.2026",
-    "dateISO": "2026-11-08",
-    "time": "09:45",
+    "date": "15.11.2026",
+    "dateISO": "2026-11-15",
+    "time": "19:45",
     "arena": "Академия льда",
-    "opponent": "Краномонтаж",
+    "opponent": "Жара",
     "tournament": "ЛХЛ-77",
-    "videoUrl": "https://rutube.ru/video/ba75fb2b735bcb99e654f132e205445b/"
+    "videoUrl": "https://vkvideo.ru/@lhl_77/all"
   },
   "results": [
+    {
+      "date": "15.11.2026",
+      "dateISO": "2026-11-15",
+      "time": "19:45",
+      "arena": "Академия льда",
+      "opponent": "Жара",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "ЛХЛ-77",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
     {
       "date": "08.11.2026",
       "dateISO": "2026-11-08",
@@ -30,20 +41,20 @@
       "result": "win",
       "tournament": "ЛХЛ-77",
       "videoUrl": "https://rutube.ru/video/60659d480d1f525c64f2a314dbf2cb6d/"
-    },
-    {
-      "date": "24.10.2026",
-      "dateISO": "2026-10-24",
-      "time": "19:45",
-      "arena": "Академия льда",
-      "opponent": "Линкор",
-      "score": "3 : 4",
-      "result": "loss",
-      "tournament": "ЛХЛ-77",
-      "videoUrl": "https://rutube.ru/video/49ced94394f1c3e9d90af63c5099d7fc/"
     }
   ],
   "allMatches": [
+    {
+      "date": "15.11.2026",
+      "dateISO": "2026-11-15",
+      "time": "19:45",
+      "arena": "Академия льда",
+      "opponent": "Жара",
+      "score": "0 : 0",
+      "result": "scheduled",
+      "tournament": "ЛХЛ-77",
+      "videoUrl": "https://vkvideo.ru/@lhl_77/all"
+    },
     {
       "date": "08.11.2026",
       "dateISO": "2026-11-08",
